@@ -11,7 +11,7 @@ const ContentSchema = new mongoose.Schema({
   },
   user: {
     type: String,
-    required: true,
+    required: false,
   },
   imageUrl: {
     type: String,

@@ -29,7 +29,7 @@ routes.get("/view", (req, res) => {
   });
 });
 
-routes.get("/view:id", (req, res) => {
+routes.get("/view/:id", (req, res) => {
   Content.findById(req.params.id, (err, data) => {
     if (err) {
       res.status(500).send(err);
@@ -39,7 +39,7 @@ routes.get("/view:id", (req, res) => {
   });
 });
 
-routes.put("/view:id", (req, res) => {
+routes.put("/view/:id", (req, res) => {
   Content.findByIdAndUpdate(
     req.params.id,
     req.body,

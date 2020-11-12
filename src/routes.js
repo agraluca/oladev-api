@@ -29,6 +29,31 @@ routes.get("/view", (req, res) => {
   });
 });
 
+routes.get("/view:id", (req, res) => {
+  Content.findById(req.params.id, (err, data) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
+});
+
+routes.put("/view:id", (req, res) => {
+  Content.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true, useFindAndModify: false },
+    (err, data) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).send(data);
+      }
+    }
+  );
+});
+
 routes.delete("/view/:id", (req, res) => {
   Content.findByIdAndDelete(req.params.id, (err, data) => {
     if (err) {
@@ -36,8 +61,7 @@ routes.delete("/view/:id", (req, res) => {
     } else {
       res.status(200).send(data);
     }
-  })
+  });
 });
-
 
 export default routes;
